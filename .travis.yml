@@ -1,0 +1,29 @@
+sudo: required
+language: rust
+cache: cargo
+sudo: required
+os:
+  - linux
+  - osx
+
+script:
+  - cargo run
+
+matrix:
+  allow_failures:
+    - rust: nightly
+
+install: 
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+
+addons:
+  apt:
+    packages:
+      - xvfb
+      - libwebkit2gtk-4.0-dev
+    sources:
+      - sourceline: 'ppa:webkit-team/ppa'
+notifications:
+  email:
+    - false
