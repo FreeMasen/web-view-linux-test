@@ -4,7 +4,6 @@ cache: cargo
 sudo: required
 os:
   - linux
-  - osx
 
 script:
   - cargo run
